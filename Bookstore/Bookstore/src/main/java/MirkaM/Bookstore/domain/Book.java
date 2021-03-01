@@ -1,20 +1,27 @@
-package bookstore_model;
+package MirkaM.Bookstore.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+
+
+
+@Entity
 public class Book {
-	private String title;
-	private String author;
-	private String year;
-	private String isbn;
-	private String price;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long id;
+	private String title, author, year, isbn, price;
 	
-	public Book() {
-		super();
-		this.title = title;
-		this.author = author;
-		this.year = year;
-		this.isbn = isbn;
-		this.price = price;
-	}
+    @ManyToOne
+    @JoinColumn(name = "categoryid")
+    private Category category;
+	public Book () {}
+	
 	
 	public Book(String title, String author, String year, String isbn, String price) {
 		super();
@@ -24,8 +31,12 @@ public class Book {
 		this.isbn = isbn;
 		this.price = price;
 	}
-	
-	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -56,11 +67,13 @@ public class Book {
 	public void setPrice(String price) {
 		this.price = price;
 	}
+	
+	public Category getCategory() {
+		return category;
+	}
 
-	@Override
-	public String toString() {
-		return "Book [title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn + ", price=" + price
-				+ "]";
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 	
 	
