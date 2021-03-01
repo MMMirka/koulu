@@ -20,16 +20,21 @@ public class Book {
     @ManyToOne
     @JoinColumn(name = "categoryid")
     private Category category;
+    
+    
 	public Book () {}
 	
 	
-	public Book(String title, String author, String year, String isbn, String price) {
+	public Book(String title, String author, String year, String isbn, String price, Category category) {
 		super();
 		this.title = title;
 		this.author = author;
 		this.year = year;
 		this.isbn = isbn;
 		this.price = price;
+		this.category = category;
+		
+		
 	}
 	public long getId() {
 		return id;
