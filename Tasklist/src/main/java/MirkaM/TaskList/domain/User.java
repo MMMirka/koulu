@@ -1,4 +1,4 @@
-package MirkaM.Bookstore.domain;
+package MirkaM.TaskList.domain;
 
 import javax.persistence.*;
 
